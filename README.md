@@ -95,12 +95,13 @@ python rag/improved_rag_sge_knapsack.py
 
 ## Important note for public GitHub repos
 
-Some scripts under [rag/](rag/) currently contain an `API_KEY = "..."` constant. Do **not** publish real API keys in a public repository.
+All scripts in this repo are intended to read your Groq key from the `GROQ_API_KEY` environment variable (optionally via a local `.env`). Do **not** commit API keys to a public repository.
 
-Recommended before pushing public:
+If GitHub blocks a push due to secret scanning:
 
-1. Replace any hard-coded keys with environment-variable reads (e.g., `os.environ["GROQ_API_KEY"]`).
-2. If a key was ever committed, rotate it in your provider dashboard.
+1. Remove the secret from the file(s).
+2. Rewrite the offending commit(s) (e.g., amend/rebase) so the secret is not present in git history.
+3. Rotate the key in your provider dashboard if you suspect it may have been exposed.
 
 ## Attribution
 
