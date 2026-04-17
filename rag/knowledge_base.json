@@ -1,0 +1,526 @@
+{
+  "TSP": {
+    "full_name": "TSP",
+    "description": "Traveling Salesman Problem - find shortest route visiting all cities exactly once and returning to start",
+    "methods": [
+      {
+        "name": "Nearest Neighbor",
+        "steps": [
+          "Choose a random starting city",
+          "Select the closest unvisited city",
+          "Repeat until all cities are visited",
+          "Return to the starting city"
+        ],
+        "best_for": "small-scale problems or rough estimates",
+        "limitations": "may not find the optimal solution"
+      },
+      {
+        "name": "2-Opt",
+        "steps": [
+          "Generate an initial random route",
+          "Select two random edges and reverse the path between them",
+          "Check if the new route is shorter",
+          "Repeat until no improvements are found"
+        ],
+        "best_for": "improving existing solutions",
+        "limitations": "may get stuck in local optima"
+      },
+      {
+        "name": "Christofides Algorithm",
+        "steps": [
+          "Create a minimum spanning tree of the cities",
+          "Find a minimum-weight perfect matching of the odd-degree vertices",
+          "Combine the tree and the matching to form a multigraph",
+          "Find an Eulerian circuit in the multigraph",
+          "Convert the circuit to a Hamiltonian cycle"
+        ],
+        "best_for": "finding good approximate solutions",
+        "limitations": "guarantees a solution within 1.5 times the optimal, but can be slow"
+      },
+      {
+        "name": "Genetic Algorithm",
+        "steps": [
+          "Initialize a population of random routes",
+          "Evaluate the fitness of each route",
+          "Select parents using a selection method",
+          "Perform crossover and mutation to generate new routes",
+          "Replace the least fit routes with the new ones"
+        ],
+        "best_for": "large-scale problems with complex constraints",
+        "limitations": "computationally intensive and may not converge"
+      },
+      {
+        "name": "Ant Colony Optimization",
+        "steps": [
+          "Initialize a set of artificial ants",
+          "Each ant traverses the cities and deposits pheromone trails",
+          "Evaluate the fitness of each ant's route",
+          "Update the pheromone trails based on the fitness",
+          "Repeat until convergence"
+        ],
+        "best_for": "dynamic or distributed TSP instances",
+        "limitations": "can be sensitive to parameter settings"
+      },
+      {
+        "name": "Branch and Bound",
+        "steps": [
+          "Create a tree of partial routes",
+          "Evaluate the lower bound of each node",
+          "Prune branches that cannot lead to an optimal solution",
+          "Explore the remaining branches",
+          "Return the optimal solution found"
+        ],
+        "best_for": "small- to medium-scale problems",
+        "limitations": "can be slow for large instances"
+      },
+      {
+        "name": "Greedy Algorithm",
+        "steps": [
+          "Choose a random starting city",
+          "At each step, choose the city that improves the route the most",
+          "Continue until all cities visited"
+        ],
+        "best_for": "small instances or rough estimate",
+        "limitations": "may not find optimal solution"
+      },
+      {
+        "name": "Brute Force",
+        "steps": [
+          "Generate all possible routes",
+          "Evaluate each route",
+          "Choose the shortest route"
+        ],
+        "best_for": "very small instances",
+        "limitations": "computationally infeasible for large instances"
+      },
+      {
+        "name": "Annealing",
+        "steps": [
+          "Start with a random initial solution",
+          "Simulate a Boltzmann process to gradually converge to a good solution",
+          "Re-anneal until a desired temperature is reached"
+        ],
+        "best_for": "large instances where good approximation sufficient",
+        "limitations": "can get stuck in local optima"
+      },
+      {
+        "name": "Brute-force",
+        "steps": [
+          "Generate all possible permutations of cities",
+          "Calculate total distance for each permutation",
+          "Select the permutation with the shortest distance"
+        ],
+        "best_for": "Small instances with up to 10 cities",
+        "limitations": "Exponential time complexity (factorial growth)"
+      },
+      {
+        "name": "Dynamic Programming (Held-Karp)",
+        "steps": [
+          "Compute minimum path costs for subsets of cities using recurrence relations",
+          "Store partial solutions in a memoization table",
+          "Reconstruct the shortest path from stored results"
+        ],
+        "best_for": "Medium instances with up to 20-30 cities",
+        "limitations": "High memory requirement (O(n\u00b22^n))"
+      },
+      {
+        "name": "Nearest Neighbor Heuristic",
+        "steps": [
+          "Start at a random city",
+          "At each step, visit the nearest unvisited city",
+          "Repeat until all cities are visited and return to start"
+        ],
+        "best_for": "Quick approximate solutions for large problems",
+        "limitations": "Significantly suboptimal results"
+      },
+      {
+        "name": "Genetic Algorithms",
+        "steps": [
+          "Initialize a population of random tours",
+          "Evaluate fitness (tour length) of each solution",
+          "Apply crossover, mutation, and selection iteratively"
+        ],
+        "best_for": "Large-scale instances with acceptable near-optimality",
+        "limitations": "Parameter tuning and long computation time"
+      },
+      {
+        "name": "Simulated Annealing",
+        "steps": [
+          "Start with a random tour and high temperature",
+          "Randomly perturb the current solution",
+          "Accept worse solutions probabilistically based on decreasing temperature"
+        ],
+        "best_for": "Escaping local optima in large problems",
+        "limitations": "Sensitive to cooling schedule parameters"
+      },
+      {
+        "name": "Tabu Search",
+        "steps": [
+          "Initialize a starting solution and tabu list",
+          "Generate neighboring solutions by swapping cities",
+          "Select the best non-tabu move and update the tabu list"
+        ],
+        "best_for": "Medium to large problems with good quality heuristics",
+        "limitations": "Requires careful design of neighborhood and tabu criteria"
+      }
+    ]
+  },
+  "VRP": {
+    "full_name": "VRP",
+    "description": "Vehicle Routing Problem - route multiple vehicles from a depot to serve all customers optimally",
+    "methods": [
+      {
+        "name": "Christofides Algorithm",
+        "steps": [
+          "Create a minimum spanning tree of the customers",
+          "Create a perfect matching of the odd-degree vertices",
+          "Combine the matching and the tree to create an Eulerian graph",
+          "Find an Eulerian tour in the graph"
+        ],
+        "best_for": "small to medium-sized instances",
+        "limitations": "computationally expensive for large instances"
+      },
+      {
+        "name": "Genetic Algorithm",
+        "steps": [
+          "Initialize a population of random routes",
+          "Evaluate the fitness of each route",
+          "Select routes for crossover and mutation",
+          "Replace the least fit routes with new ones"
+        ],
+        "best_for": "large and complex instances",
+        "limitations": "may get stuck in local optima"
+      },
+      {
+        "name": "Ant Colony Optimization",
+        "steps": [
+          "Initialize a set of artificial ants",
+          "Each ant constructs a route by iteratively choosing the next customer",
+          "Update the pheromone trails based on the quality of the routes",
+          "Repeat until convergence"
+        ],
+        "best_for": "dynamic and stochastic instances",
+        "limitations": "computationally expensive and sensitive to parameters"
+      },
+      {
+        "name": "Simulated Annealing",
+        "steps": [
+          "Initialize a random route",
+          "Evaluate the cost of the route",
+          "Generate a new route by applying a perturbation",
+          "Accept or reject the new route based on the Metropolis criterion"
+        ],
+        "best_for": "instances with multiple local optima",
+        "limitations": "may require careful tuning of parameters"
+      },
+      {
+        "name": "Vehicle Routing using Google OR-Tools",
+        "steps": [
+          "Define the routing model",
+          "Specify the vehicles and their capacities",
+          "Add the customers and their demands",
+          "Solve the routing problem"
+        ],
+        "best_for": "practical and real-world instances",
+        "limitations": "requires familiarity with the OR-Tools library"
+      },
+      {
+        "name": "Breadth-First Search",
+        "steps": [
+          "Initialize solution pool with depot and customer nodes",
+          "Explore all immediate neighbors",
+          "Select best neighbor solution based on vehicle capacity and distance"
+        ],
+        "best_for": "Medium to large-sized problems with limited constraints",
+        "limitations": "May not find optimal solution"
+      },
+      {
+        "name": "2-Opt",
+        "steps": [
+          "Start with initial random solution",
+          "Iteratively remove and reinsert edges to improve route",
+          "Continue until no further improvements"
+        ],
+        "best_for": "Small to medium-sized problems with few constraints",
+        "limitations": "May get stuck in local optima"
+      },
+      {
+        "name": "Cluster First-Routing Second (CFS)",
+        "steps": [
+          "Group customers by similarity into clusters",
+          "Assign each cluster to closest vehicle",
+          "Improve routes using routing algorithms like 2-Opt"
+        ],
+        "best_for": "Large-scale problems with many similar customers",
+        "limitations": "Cluster definition can be complex"
+      },
+      {
+        "name": "Ant Colony Optimization (ACO)",
+        "steps": [
+          "Initialize pheromone trails with equal value",
+          "Iteratively select solution based on pheromone trails",
+          "Update pheromone trails based on solution quality"
+        ],
+        "best_for": "Large and complex problems with many constraints",
+        "limitations": "High computational complexity and pheromone convergence issues"
+      },
+      {
+        "name": "VNS (Variable Neighborhood Search)",
+        "steps": [
+          "Start with initial solution and neighborhood definition",
+          "Iteratively move to new neighborhood solutions",
+          "Select best solution and repeat until convergence"
+        ],
+        "best_for": "Medium to large-sized problems with few constraints",
+        "limitations": "Dependent on effective neighborhood definition"
+      },
+      {
+        "name": "Column Generation",
+        "steps": [
+          "Formulate LP-relaxation of VRP problem",
+          "Generate columns as integer solutions",
+          "Improve lower bound using linear programming and column generation"
+        ],
+        "best_for": "Large and complex problems with many constraints",
+        "limitations": "High computational complexity and difficult to solve"
+      },
+      {
+        "name": "Solver based on Constraint Programming",
+        "steps": [
+          "Model problem as constraints (e.g., capacity, routing requirements)",
+          "Solve using CP tools (e.g., Choco, Google OR-Tools)",
+          "Post-processing to satisfy additional constraints"
+        ],
+        "best_for": "Large and complex problems with many constraints",
+        "limitations": "Computational intensive and may not guarantee optimality"
+      },
+      {
+        "name": "Mixed Integer Programming Solver",
+        "steps": [
+          "Model problem as MIP formulation (e.g., branch-and-bound)",
+          "Solve using MIP solvers (e.g., CPLEX, Gurobi)",
+          "Retrieve optimal solution and analyze solution quality"
+        ],
+        "best_for": "Medium to large-sized problems with few or many constraints",
+        "limitations": "Computational intensive and may not always find optimal solution"
+      },
+      {
+        "name": "Branch and Cut",
+        "steps": [
+          "Formulate the VRP as an integer linear program",
+          "Add cutting planes to eliminate fractional solutions",
+          "Perform branch and bound to find optimal routes"
+        ],
+        "best_for": "Small to medium-sized VRP with strict optimality requirements",
+        "limitations": "High computational cost for large problem instances"
+      },
+      {
+        "name": "Clarke-Wright Savings Algorithm",
+        "steps": [
+          "Calculate savings between all customer pairs",
+          "Sort savings in descending order",
+          "Iteratively merge feasible routes using highest savings"
+        ],
+        "best_for": "VRP with vehicle capacity constraints and moderate customer counts",
+        "limitations": "Greedy approach may produce suboptimal solutions"
+      },
+      {
+        "name": "Genetic Algorithm (GA)",
+        "steps": [
+          "Initialize a population of random route combinations",
+          "Select parents based on fitness (e.g., route cost)",
+          "Apply crossover/mutation to generate new offspring",
+          "Iterate until convergence"
+        ],
+        "best_for": "Complex VRP with multiple constraints and large-scale instances",
+        "limitations": "Requires tuning of parameters and may converge to local optima"
+      },
+      {
+        "name": "Tabu Search",
+        "steps": [
+          "Generate an initial solution",
+          "Explore neighboring solutions while avoiding tabu moves",
+          "Update the tabu list based on recent changes",
+          "Iterate until stopping criteria are met"
+        ],
+        "best_for": "VRP requiring escape from local optima",
+        "limitations": "Performance depends on effective tabu list management"
+      }
+    ]
+  },
+  "JSP": {
+    "full_name": "JSP",
+    "description": "Job Scheduling Problem - schedule jobs on machines to minimize total completion time or makespan",
+    "methods": [
+      {
+        "name": "Johnson's Algorithm",
+        "steps": [
+          "Sort jobs by processing time",
+          "Schedule the shortest job first on the machine with the earliest end time",
+          "Repeat until all jobs are scheduled"
+        ],
+        "best_for": "Two-machine problem with consistent processing times",
+        "limitations": "Limited to two machines"
+      },
+      {
+        "name": "NEH (Nawaz-Enscore-Ham) Algorithm",
+        "steps": [
+          "Calculate total processing time for each job",
+          "Sort jobs in descending order of total processing time",
+          "Schedule the first two jobs and calculate the makespan",
+          "Iteratively insert the remaining jobs to minimize makespan"
+        ],
+        "best_for": "Flow shop scheduling with multiple machines",
+        "limitations": "High computational complexity for large problem sizes"
+      },
+      {
+        "name": "CDS (Campbell-Dudek--Smith) Algorithm",
+        "steps": [
+          "Calculate the total processing time for each job",
+          "Sort jobs in descending order of total processing time",
+          "Schedule the jobs on the machine with the earliest end time",
+          "Update the machine end times after each job scheduling"
+        ],
+        "best_for": "Flow shop scheduling with multiple machines and consistent processing times",
+        "limitations": "May not produce optimal solutions for large problem sizes"
+      },
+      {
+        "name": "Genetic Algorithm",
+        "steps": [
+          "Generate an initial population of random schedules",
+          "Calculate the makespan for each schedule",
+          "Select the fittest schedules and apply crossover and mutation",
+          "Repeat until a stopping criterion is met"
+        ],
+        "best_for": "Complex job scheduling problems with multiple machines and constraints",
+        "limitations": "High computational complexity and may converge to local optima"
+      },
+      {
+        "name": "First-Come-First-Served (FCFS)",
+        "steps": [
+          "Sort jobs in arrival order",
+          "Assign each job to the first available machine",
+          "Process jobs on each machine in order"
+        ],
+        "best_for": "Simplest implementation, low computational complexity",
+        "limitations": "Does not minimize makespan"
+      },
+      {
+        "name": "Shortest Processing Time (SPT)",
+        "steps": [
+          "Sort jobs by processing time",
+          "Assign each job to the machine with the shortest current total processing time",
+          "Process jobs on each machine in order"
+        ],
+        "best_for": "Reduces makespan, suitable for online scheduling",
+        "limitations": "Does not consider job release times, arrival times, or machine availability"
+      },
+      {
+        "name": "Shortest Job First (SJF)",
+        "steps": [
+          "Sort jobs by processing time",
+          "Assign each job to the machine with the shortest current job processing time",
+          "Process jobs on each machine in order"
+        ],
+        "best_for": "Reduces makespan, suitable for systems with multiple machines",
+        "limitations": "Does not consider machine availability or job priorities"
+      },
+      {
+        "name": "Rate Monotonic Scheduling (RMS)",
+        "steps": [
+          "Assign a deadline to each job",
+          "Prioritize jobs based on their deadlines",
+          "Assign each job to the first available machine"
+        ],
+        "best_for": "Suitable for real-time systems, meets deadlines",
+        "limitations": "Does not minimize makespan or consider job processing times"
+      },
+      {
+        "name": "Least Work Remaining (LWR)",
+        "steps": [
+          "Sort jobs by their remaining work",
+          "Assign each job to the machine with the least current work",
+          "Process jobs on each machine in order"
+        ],
+        "best_for": "Reduces makespan, suitable for parallel processing",
+        "limitations": "Does not consider job priorities or machine availability"
+      }
+    ]
+  },
+  "Knapsack": {
+    "full_name": "Knapsack",
+    "description": "Knapsack Problem - select items with given weights and values to maximize value within a weight capacity",
+    "methods": [
+      {
+        "name": "Dynamic Programming",
+        "steps": [
+          "Create a 2D table to store maximum values",
+          "Fill the table using iterative approach",
+          "Choose the maximum value from the table"
+        ],
+        "best_for": "small to medium-sized problems",
+        "limitations": "high memory usage for large problems"
+      },
+      {
+        "name": "Greedy Algorithm",
+        "steps": [
+          "Sort items by value-to-weight ratio",
+          "Select items with the highest ratio",
+          "Stop when the knapsack is full"
+        ],
+        "best_for": "approximate solutions for large problems",
+        "limitations": "may not find the optimal solution"
+      },
+      {
+        "name": "Brute Force",
+        "steps": [
+          "Generate all possible combinations of items",
+          "Calculate the total value and weight for each combination",
+          "Choose the combination with the maximum value within the weight capacity"
+        ],
+        "best_for": "very small problems",
+        "limitations": "exponential time complexity"
+      },
+      {
+        "name": "Backtracking",
+        "steps": [
+          "Start with an empty knapsack",
+          "Add items one by one and check the feasibility",
+          "Backtrack when the weight capacity is exceeded"
+        ],
+        "best_for": "medium-sized problems with complex constraints",
+        "limitations": "high computational time for large problems"
+      },
+      {
+        "name": "Branch and Bound",
+        "steps": [
+          "Create a tree with all possible combinations of items",
+          "Prune branches that exceed the weight capacity",
+          "Choose the branch with the maximum value"
+        ],
+        "best_for": "large problems with complex constraints",
+        "limitations": "high computational time and memory usage"
+      },
+      {
+        "name": "Greedy Heuristic",
+        "steps": [
+          "Sort items by value/weight ratio in descending order",
+          "Select items with highest ratio until capacity is reached",
+          "If fractional allowed, include partial items to fill remaining capacity"
+        ],
+        "best_for": "fractional Knapsack problems or quick approximations",
+        "limitations": "does not guarantee optimal solutions for 0-1 Knapsack"
+      },
+      {
+        "name": "Genetic Algorithm",
+        "steps": [
+          "Initialize a population of binary strings representing item selections",
+          "Evaluate fitness (e.g., total value) and enforce weight constraints",
+          "Apply crossover, mutation, and selection to evolve better solutions"
+        ],
+        "best_for": "approximate solutions to large-scale Knapsack problems",
+        "limitations": "does not guarantee global optima and requires parameter tuning"
+      }
+    ]
+  }
+}
