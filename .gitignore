@@ -39,7 +39,12 @@ htmlcov/
 # ---- Environment / secrets ----
 .env
 .env.*
+!.env.example
 /env
+
+# ---- Results (keep instances_*.json for reproducibility) ----
+results/*.csv
+results/plots/
 
 # ---- Logs / temp ----
 *.log

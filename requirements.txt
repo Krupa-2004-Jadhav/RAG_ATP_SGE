@@ -1,0 +1,6 @@
+groq
+python-dotenv
+numpy
+scipy
+matplotlib
+pytest
